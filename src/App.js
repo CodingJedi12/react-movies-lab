@@ -20,17 +20,19 @@ function App() {
 }
 
 //attempt to find a random movie to populate the page on default render
-// const getRandom = async (searchTerm) => {
-//   //make a fetch request and store the response
-//   const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${Math.floor(Math.random()*1000)}`);
-// //parse JSON response into a js object
-// const data = await response.json();
-// setMovie(data);
-// }
+const getRandom = async (searchTerm) => {
+  //make a fetch request and store the response
+  const randomId = Math.floor(Math.random()*10000000);
+  console.log(randomId)
+  const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=tt${randomId}`);
+//parse JSON response into a js object
+const data = await response.json();
+setMovie(data);
+}
 
   //essentially sets default render
   React.useEffect(() => { 
-    getMovie("Star Wars")
+    getRandom();
   }, []);
 
 
